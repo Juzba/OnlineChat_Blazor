@@ -1,32 +1,54 @@
+$background-color: #103778;
+$text-color: #FF7A48;
+$first-color: #E3371E;
+
+$border-radius: 5px;
+
+
+
 .chat {
     width: 500px;
     height: 500px;
-    background-color: cornflowerblue;
+    background-color: $background-color;
     display: flex;
     flex-direction: column;
     align-content: space-between;
     justify-content: space-between;
+    border-radius: $border-radius;
+    padding: 10px;
 
 
     .messages {
+        color: $text-color;
         flex: 1;
+        overflow-y:auto;
     }
 
-    .form {
-        padding: 10px;
+    .form{
         display: flex;
         flex-direction: column;
         gap: 10px;
 
         .inpName {
-            background-color: red;
             max-width: 200px;
-            color: red;
+            color: black;
+            outline: none;
+            border: none;
+            border-radius: $border-radius;
         }
 
         .inpMessage {
-            color: red;
+            color: black;
             height: 100px;
+            outline: none;
+            border: solid 1px $first-color;
+            border-radius: $border-radius;
+            resize: none;
+        }
+
+        button{
+            border-radius: $border-radius;
+            background-color: $first-color;  
         }
     }
 }

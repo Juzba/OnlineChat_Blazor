@@ -3,6 +3,7 @@
     public class Message
     {
         public int Id { get; set; } = 0;
+        public int UserId { get; set; }
         public required User User { get; set; }
 
         public DateTime DateTime { get; set; }

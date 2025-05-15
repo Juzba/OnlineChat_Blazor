@@ -12,8 +12,8 @@ using OnlineChat_Blazor.Models;
 namespace OnlineChat_Blazor.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    [Migration("20250515134131_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250515170527_ÍnitialCreate")]
+    partial class ÍnitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

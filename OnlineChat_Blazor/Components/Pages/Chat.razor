@@ -1,36 +1,83 @@
 ﻿@page "/Chat"
+@rendermode InteractiveServer
+@using System.Linq;
 
 <h3>Chat</h3>
 
 <div class="chat">
 	<div class="messages">
+		<p>user: @userName</p>
+		<p>Text: @userText</p>
+		<p>Info: @infoText</p>
 
-		@foreach( var message in messages)
+
+		@if(messages != null)
 		{
-			<p>@message.User.Name</p>
-			<p>@message.</p>
-			<p>@message.Text</p>
+			foreach( var message in messages)
+			{
+				<p>@users.FirstOrDefault(p=> p.Id == message.UserId)?.Name</p>
+				<p>@message.DateTime</p>
+				<p>@message.Text</p>
+			}
 		}
+
 	</div>
-	<div class="form">
-		<input placeholder="Name" class="inpName" type="text" @bind-value="userName"></input>
+
+	<form onsubmit="@OnSubmit" class="form">
+		<input  placeholder="Name" class="inpName" type="text" @bind="userName"></input>
 		<textarea placeholder="Text" type="text" class="inpMessage" @bind="userText"></textarea>
+		<button type="submit">Odeslat</button>
 
+	</form>
 
-	</div>
 </div>
 
 @code {
 	List<Message> messages = new();
+	List<User> users = new();
 	string userName = "";
 	string userText = "";
+	string infoText = "";
 
 
 	protected override void OnInitialized()
 	{
 		base.OnInitialized();
-		Console.WriteLine("start");
+		LoadDB();
+	}
 
+
+	void LoadDB()
+	{
+		using(var context = new MyDBContext())
+		{
+			messages = context.Messages.ToList(); 
+			users = context.Users.ToList(); 
+		}
+
+	}
+
+
+	void OnSubmit()
+	{
+		if(userName.Length > 2 && userName.Length < 20 && userText.Length > 0 && userText.Length < 200)
+		{
+			var message = new Message() {Id = 0, User = new User() {Id = 0, Name = userName }, DateTime = DateTime.Now, Text = userText };
+			using(var context = new MyDBContext())
+			{
+				context.Messages.Add(message);
+				context.SaveChanges();
+			}
+
+			infoText= "odesláno";
+			userText = "";
+			StateHasChanged();
+
+		}
+		else
+		{
+			infoText = "Chybné parametry";
+		}
 	}
 
 }
