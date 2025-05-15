@@ -2,21 +2,21 @@
 @rendermode InteractiveServer
 @using System.Linq;
 
+
 <h3>Chat</h3>
 
 <div class="chat">
 	<div class="messages">
-		<p>user: @userName</p>
-		<p>Text: @userText</p>
-		<p>Info: @infoText</p>
 
 
 		@if(messages != null)
 		{
 			foreach( var message in messages)
 			{
-				<p>@users.FirstOrDefault(p=> p.Id == message.UserId)?.Name</p>
-				<p>@message.DateTime</p>
+				<div class="box">
+					<p class="name">@users.FirstOrDefault(p => p.Id == message.UserId)?.Name</p>
+					<p class="time">@message.DateTime</p>
+				</div>
 				<p>@message.Text</p>
 			}
 		}
@@ -24,7 +24,10 @@
 	</div>
 
 	<form onsubmit="@OnSubmit" class="form">
-		<input  placeholder="Name" class="inpName" type="text" @bind="userName"></input>
+		<div class="box">
+			<input  placeholder="Name" class="inpName" type="text" @bind="userName"></input>
+			<p>@infoText</p>
+		</div>
 		<textarea placeholder="Text" type="text" class="inpMessage" @bind="userText"></textarea>
 		<button type="submit">Odeslat</button>
 
@@ -51,9 +54,10 @@
 	{
 		using(var context = new MyDBContext())
 		{
-			messages = context.Messages.ToList(); 
+			messages = context.Messages.OrderDescending().Take(10).ToList();
 			users = context.Users.ToList(); 
 		}
+		
 
 	}
 
@@ -71,8 +75,7 @@
 
 			infoText= "odesláno";
 			userText = "";
-			StateHasChanged();
-
+			LoadDB();
 		}
 		else
 		{
@@ -81,3 +84,5 @@
 	}
 
 }
+
+

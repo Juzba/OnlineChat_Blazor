@@ -1,6 +1,7 @@
-$background-color: #103778;
-$text-color: #FF7A48;
-$first-color: #E3371E;
+$background-color: #3A5EF0;
+$text-color: #D5F04F;
+$first-color: #E1F03A;
+$Second-color: #F0A607;
 
 $border-radius: 5px;
 
@@ -22,6 +23,24 @@ $border-radius: 5px;
         color: $text-color;
         flex: 1;
         overflow-y:auto;
+        padding-bottom: 100px;
+
+        .box{
+            display: flex;
+            flex-direction: row;
+
+            justify-content:space-between;
+
+            .name{
+                font-size: 1.2rem;
+                font-weight:900;
+                color:$Second-color;
+            }
+
+            .time{
+                margin-right: 20px;
+            }
+        }
     }
 
     .form{
@@ -29,17 +48,26 @@ $border-radius: 5px;
         flex-direction: column;
         gap: 10px;
 
-        .inpName {
-            max-width: 200px;
-            color: black;
-            outline: none;
-            border: none;
-            border-radius: $border-radius;
+        .box{
+            display: flex;
+            flex-direction: row;
+
+            p{
+                margin: 0 0 0 25px;
+            }
+
+            .inpName {
+                max-width: 200px;
+                color: black;
+                outline: none;
+                border: none;
+                border-radius: $border-radius;
+            }
         }
 
         .inpMessage {
             color: black;
-            height: 100px;
+            height: 70px;
             outline: none;
             border: solid 1px $first-color;
             border-radius: $border-radius;
