@@ -1,0 +1,27 @@
+﻿.chat {
+  width: 500px;
+  height: 500px;
+  background-color: cornflowerblue;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
+}
+.chat .messages {
+  flex: 1;
+}
+.chat .form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chat .form .inpName {
+  background-color: red;
+  max-width: 200px;
+  color: red;
+}
+.chat .form .inpMessage {
+  color: red;
+  height: 100px;
+}

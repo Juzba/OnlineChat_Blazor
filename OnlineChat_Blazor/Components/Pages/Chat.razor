@@ -1,0 +1,36 @@
+﻿@page "/Chat"
+
+<h3>Chat</h3>
+
+<div class="chat">
+	<div class="messages">
+
+		@foreach( var message in messages)
+		{
+			<p>@message.User.Name</p>
+			<p>@message.</p>
+			<p>@message.Text</p>
+		}
+	</div>
+	<div class="form">
+		<input placeholder="Name" class="inpName" type="text" @bind-value="userName"></input>
+		<textarea placeholder="Text" type="text" class="inpMessage" @bind="userText"></textarea>
+
+
+	</div>
+</div>
+
+@code {
+	List<Message> messages = new();
+	string userName = "";
+	string userText = "";
+
+
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+		Console.WriteLine("start");
+
+	}
+
+}
