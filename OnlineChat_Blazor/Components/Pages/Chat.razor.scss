@@ -1,7 +1,7 @@
-$background-color: #3A5EF0;
-$text-color: #D5F04F;
-$first-color: #E1F03A;
-$Second-color: #F0A607;
+$background-color: #0C1A26;
+$text-color: white;
+$first-color: #048C7F;
+$Second-color: #F22613;
 
 $border-radius: 5px;
 
@@ -16,43 +16,43 @@ $border-radius: 5px;
     align-content: space-between;
     justify-content: space-between;
     border-radius: $border-radius;
+    border: solid 1px #e711115a;
     padding: 10px;
 
 
     .messages {
         color: $text-color;
         flex: 1;
-        overflow-y:auto;
+        overflow-y: auto;
         padding-bottom: 100px;
 
-        .box{
+        .box {
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
 
-            justify-content:space-between;
-
-            .name{
+            .name {
                 font-size: 1.2rem;
-                font-weight:900;
-                color:$Second-color;
+                font-weight: 900;
+                color: $Second-color;
             }
 
-            .time{
+            .time {
                 margin-right: 20px;
             }
         }
     }
 
-    .form{
+    .form {
         display: flex;
         flex-direction: column;
         gap: 10px;
 
-        .box{
+        .box {
             display: flex;
             flex-direction: row;
 
-            p{
+            p {
                 margin: 0 0 0 25px;
             }
 
@@ -74,9 +74,9 @@ $border-radius: 5px;
             resize: none;
         }
 
-        button{
+        button {
             border-radius: $border-radius;
-            background-color: $first-color;  
+            background-color: $first-color;
         }
     }
 }
